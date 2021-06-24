@@ -1,0 +1,27 @@
+body{
+  margin: 0px;
+}
+
+.border{
+  border: 2px solid red;
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: row;
+  border: 2px solid;
+  margin-top: 5px;
+}
+
+.width-50{
+  width: 50%;
+  height: 50vh;
+}
+
+.btn{
+  padding-top: 11px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: 10px;
+}
