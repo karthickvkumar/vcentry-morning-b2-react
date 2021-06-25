@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 
 class ContentComponent extends Component{
 
+  constructor(props){
+    super(props);
+    this.state = {
+      userName : ''
+    }
+  }
+
   onInputChange = (event) => {  
-    console.log(event.target.value)
+    this.setState({
+      userName : event.target.value
+    });
   }
 
   render(){
@@ -11,6 +20,7 @@ class ContentComponent extends Component{
       <div className="width-50">
         <h1>This is a Content Component</h1>
         <input type="text" placeholder="Enter a username.." onChange={this.onInputChange}/>
+        <h1>{this.state.userName}</h1>
       </div>
     )
   }
