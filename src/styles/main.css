@@ -57,3 +57,7 @@ body{
   height: 50px;
 
 }
+
+.error-msg{
+  color: red;
+}

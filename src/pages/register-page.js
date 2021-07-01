@@ -13,7 +13,11 @@ class RegisterPage extends Component{
       gender : '',
       hobbies : [],
       address : '',
-      city : ''
+      city : '',
+      error_firstName : false,
+      error_lastName : false,
+      error_email : false,
+      error_Password : false,
     }
   }
 
@@ -23,8 +27,8 @@ class RegisterPage extends Component{
         this.state.hobbies.push(event.target.value);
       }
       else{
-        const index = this.state.hobbies.findIndex((value, index) => {
-          return value == event.target.value
+        const index = this.state.hobbies.findIndex((value) => {
+          return value === event.target.value
         });
         this.state.hobbies.splice(index, 1);
       }
@@ -44,25 +48,57 @@ class RegisterPage extends Component{
     console.log(this.state)
   }
 
+  onInputFocus = (event) => {
+    // console.log("ON FOCUS ",event.target)
+    const key = "error_" + event.target.name;
+    this.setState({
+      [key] : false
+    })
+    
+  }
+  
+  onInputBlur = (event) => {
+    // console.log("ON BLUR", event.target)
+    const key = "error_" + event.target.name;
+    const value = event.target.value;
+    if(value.length === 0){
+      this.setState({
+        [key] : true
+      })
+    }
+
+  }
+
   render() {
     return (
       <div className="login-form">
           <h2>Create your Account</h2>
           <div>
             <label className="label">Enter your First Name </label>
-            <input type="text" className="input" name="firstName" placeholder="Please enter first name.." onChange={this.onHandleInput}/>
+            <input type="text" className="input" name="firstName" placeholder="Please enter first name.." onChange={this.onHandleInput} onFocus={this.onInputFocus} onBlur={this.onInputBlur}/>
+            { this.state.error_firstName && 
+              <div>
+                <span className="error-msg">Please enter a valid user first name</span>
+              </div>
+             }
           </div>
           <div className="m-top-15">
             <label className="label">Enter your Last Name </label>
-            <input type="text" className="input" name="lastName" placeholder="Please enter last name.." onChange={this.onHandleInput}/>
+            <input type="text" className="input" name="lastName" placeholder="Please enter last name.." onChange={this.onHandleInput}  onFocus={this.onInputFocus} onBlur={this.onInputBlur}/>
+            { this.state.error_lastName &&  
+            <div>
+              <span className="error-msg">Please enter a valid user last name</span>
+            </div>}
           </div>
           <div className="m-top-15">
             <label className="label">Enter your Email Id </label>
-            <input type="text" className="input" name="email" placeholder="Please enter email id.." onChange={this.onHandleInput}/>
+            <input type="text" className="input" name="email" placeholder="Please enter email id.." onChange={this.onHandleInput} onFocus={this.onInputFocus} onBlur={this.onInputBlur}/>
+            { this.state.error_email && <div><span className="error-msg">Please enter a valid email id</span></div>}
           </div>
           <div className="m-top-15">
             <label className="label">Enter your Password </label>
-            <input type="text" className="input" name="password" placeholder="Please enter password.." onChange={this.onHandleInput}/>
+            <input type="password" className="input" name="password" placeholder="Please enter password.." onChange={this.onHandleInput}  onFocus={this.onInputFocus} onBlur={this.onInputBlur}/>
+            { this.state.error_password && <div><span className="error-msg">Please enter a valid password</span></div>}
           </div>
           <div className="m-top-15">
             <label className="label">Select your D.O.B </label>
@@ -102,6 +138,7 @@ class RegisterPage extends Component{
           <div className="m-top-15">
             <button onClick={() => { this.createAccount(); }}>Create My Account</button>
           </div>
+
       </div>
     );
   }
