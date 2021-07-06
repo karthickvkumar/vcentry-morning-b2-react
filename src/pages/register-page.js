@@ -56,7 +56,27 @@ class RegisterPage extends Component{
   }
 
   createAccount(){
-    console.log(this.state.register)
+
+    for(let key in this.state.register){
+      if(key === 'hobbies'){
+        if(this.state.register.hobbies.length === 0){
+          this.state.error.hobbies = true;
+        }else{
+          this.state.error.hobbies = false;
+        }
+      }
+      else if(this.state.register[key] === ''){
+        this.state.error[key] = true; 
+      }
+      else{
+        this.state.error[key] = false; 
+      }
+    }
+
+    this.setState({
+      error : this.state.error
+    })
+
   }
 
   onInputFocus = (event) => {
