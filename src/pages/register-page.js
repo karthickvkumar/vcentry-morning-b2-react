@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {NavLink} from 'react-router-dom';
 
 class RegisterPage extends Component{
   
@@ -68,7 +69,7 @@ class RegisterPage extends Component{
       else if(this.state.register[key] === ''){
         this.state.error[key] = true; 
       }
-      else{
+      else{ 
         this.state.error[key] = false; 
       }
     }
@@ -185,7 +186,7 @@ class RegisterPage extends Component{
           <div className="m-top-15">
             <button onClick={() => { this.createAccount(); }}>Create My Account</button>
           </div>
-
+          <NavLink to="/">Go back to Login Page</NavLink>
       </div>
     );
   }
