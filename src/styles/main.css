@@ -8,7 +8,8 @@ body{
 
 .wrapper{
   display: flex;
-  flex-direction: row;
+  height: 98vh;
+  flex-direction: column;  
   border: 2px solid;
   margin-top: 5px;
 }
@@ -24,6 +25,10 @@ body{
   padding-left: 20px;
   padding-right: 20px;
   margin-right: 10px;
+  background-color: #1976d2;
+  color: white;
+  border: 2px solid;
+  margin: 15px;
 }
 
 .login-form{
@@ -60,4 +65,34 @@ body{
 
 .error-msg{
   color: red;
+}
+
+.header{
+  border: 2px solid red;
+  height: 8%;
+}
+
+.body{
+  border: 2px solid blue;
+  height: 91%;
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar{
+  border: 2px solid red;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content{
+  border: 2px solid green;
+  width: 80%;
+}
+
+.active-btn{
+  background-color: black;
+  border: 2px solid black;
 }
