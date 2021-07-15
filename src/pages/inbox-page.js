@@ -9,6 +9,10 @@ class InboxPage extends Component {
       userList : []
     }
   }
+
+  componentDidMount(){
+    this.listAPI();
+  }
   
   listAPI(){
     
