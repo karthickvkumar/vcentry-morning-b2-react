@@ -5,7 +5,6 @@ class InboxPage extends Component {
 
   constructor(props){
     super(props);
-    console.log(props)
     this.state = {
       userList : []
     }
@@ -20,7 +19,7 @@ class InboxPage extends Component {
     const url = "https://reqres.in/api/users?page=2";
     axios.get(url)
         .then((response) => {
-          console.log(response.data.data);
+          //console.log(response.data.data);
           this.setState({
             userList : response.data.data
           })
@@ -32,6 +31,9 @@ class InboxPage extends Component {
   }
 
   render() {
+    let loginData = this.props.history.location.state;
+    console.log(loginData);
+
     let users = this.state.userList.map((value, index) => {
       return(
         <tr key={index}>
@@ -46,10 +48,11 @@ class InboxPage extends Component {
       )
     });
 
-    console.log(users)
+    //console.log(users)
 
     return (
       <div>
+        <h1>Logged IN user - {loginData.email}</h1>
         <h1>This is a INBOX PAGE</h1>
         <button onClick={() => this.listAPI()}>List API</button>
         <table>
