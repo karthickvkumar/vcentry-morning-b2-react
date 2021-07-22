@@ -9,18 +9,10 @@ class ContentComponent extends Component{
     }
   }
 
-  onInputChange = (event) => {  
-    this.setState({
-      userName : event.target.value
-    });
-  }
-
   render(){
     return(
-      <div className="width-50">
-        <h1>This is a Content Component</h1>
-        <input type="text" placeholder="Enter a username.." onChange={this.onInputChange}/>
-        <h1>{this.state.userName}</h1>
+      <div className="content">
+         <h1>Content Page</h1> 
       </div>
     )
   }
